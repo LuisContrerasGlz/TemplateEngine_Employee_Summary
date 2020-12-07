@@ -17,7 +17,17 @@ employees =[];
 function thisisend(){
     console.log("termine");
     console.log(employees);
-    render(employees);
+    let t=render(employees);
+    fs.writeFile(outputPath,t,{encoding:'utf8'},function(error){
+        if(error){
+            console.log('error: 4{error}');
+        }else{
+            console.log('ready');
+        }
+    });
+
+
+
 }
 
 function new_engineer(){
@@ -54,11 +64,7 @@ function new_engineer(){
         console.log('engineers');
         let e = new Engineer.Engineer(engineers.mameEngineer,engineers.idEngineer, engineers.emailEngineer, engineers.gitEngineer);
         employees.push(e);
-        //console.log(e.getName());
-        //console.log(e.getId());
-        //console.log(e.getEmail());
-        //console.log(e.getGithub());
-        //console.log(e.getRole());
+
         if (engineers.optMember=="Engineer"){
             new_engineer();
         }else{
@@ -108,11 +114,6 @@ function new_intern(){
         console.log('interns');
         let e = new Intern.Intern(interns.mameIntern,interns.idIntern, interns.emailIntern, interns.schoolIntern);
         employees.push(e);
-        //console.log(e.getName());
-        //console.log(e.getId());
-        //console.log(e.getEmail());
-        //console.log(e.getSchool());
-        //console.log(e.getRole());
         if (interns.optMember=="Engineer"){
             new_engineer();
         }else{
@@ -162,11 +163,6 @@ inquirer.prompt([
     console.log('managers');
     let m = new Manager.Manager(managers.nameManager,managers.idManager, managers.emailManager, managers.oficceManager);
     employees.push(m);
-    //console.log(m.getName());
-    //console.log(m.getId());
-    //console.log(m.getEmail());
-    //console.log(m.getOfficeNumber());
-    //console.log(m.getRole());
     if (managers.optMember=="Engineer"){
         new_engineer();
     }else{
@@ -177,4 +173,3 @@ inquirer.prompt([
         }
     }
 })
-
