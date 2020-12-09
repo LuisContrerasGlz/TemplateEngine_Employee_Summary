@@ -51,3 +51,4 @@ test/          // jest tests
   Manager.test.js
 app.js         // Runs the application
 ```
+Link to YouTube video demo: https://www.youtube.com/watch?v=rrURHLdU8t4
